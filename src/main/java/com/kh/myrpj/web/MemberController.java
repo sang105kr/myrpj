@@ -1,19 +1,19 @@
 package com.kh.myrpj.web;
 
-import com.kh.myrpj.web.form.api.MemberSaveForm;
+import com.kh.myrpj.web.member.MemberSaveForm;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.lang.reflect.Member;
-
 @Slf4j
-@RequestMapping("/member")
+@Controller
 @AllArgsConstructor
+@RequestMapping("/member")
 public class MemberController {
 
     @GetMapping("/add")
