@@ -1,6 +1,7 @@
-package com.kh.myrpj.web;
+package com.kh.myrpj.web.member;
 
-import com.kh.myrpj.web.member.MemberSaveForm;
+import com.kh.myrpj.domain.member.Member;
+import com.kh.myrpj.domain.member.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,13 +14,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Slf4j
 @Controller
 @AllArgsConstructor
-@RequestMapping("/member")
+@RequestMapping("/members")
 public class MemberController {
+
+    private final MemberRepository memberRepository;
 
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("member", new MemberSaveForm());
-        return "/member/add1.html";
+        return "/member/addForm";
     }
 
     @PostMapping("/add")
@@ -32,8 +35,13 @@ public class MemberController {
         //객체오류
 
         //성공로직
+        Member member = new Member();
+        member.setMemberId(memberSaveForm.getMemberId());
+        member.setPassword(memberSaveForm.getPassword());
+        member.setMemberId(memberSaveForm.getName());
+        memberRepository.save(member);
 
-        return "/";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/detail")

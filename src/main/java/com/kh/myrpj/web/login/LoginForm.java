@@ -1,15 +1,13 @@
-package com.kh.myrpj.web.member;
+package com.kh.myrpj.web.login;
 
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 
 @Data
-public class MemberSaveForm {
+public class LoginForm {
     @NotEmpty
     private String memberId;
     @NotEmpty
     private String password;
-    @NotEmpty
-    private String name;
 }
